@@ -30,6 +30,11 @@ contract('DecentralBank', ([owner, customer]) => {
       const name = await tether.name()
       assert.equal(name, 'Mock Tether Token')
     })
+
+    it('customer has 100 tether tokens', async () => {
+      const balance = await tether.balanceOf(customer)
+      assert.equal(balance, tokens('100'))
+    })
   })
   
   describe('Reward Token Deployment', async () => {
