@@ -31,10 +31,6 @@ contract('DecentralBank', ([owner, customer]) => {
       assert.equal(name, 'Mock Tether Token')
     })
 
-    it('customer has 100 tether tokens', async () => {
-      const balance = await tether.balanceOf(customer)
-      assert.equal(balance, tokens('100'))
-    })
   })
   
   describe('Reward Token Deployment', async () => {
@@ -53,6 +49,13 @@ contract('DecentralBank', ([owner, customer]) => {
     it('contract has tokens', async () => {
       let balance = await rwd.balanceOf(decentralBank.address)
       assert.equal(balance, tokens('1000000'))
+    })
+  })
+
+  describe('Yield Farming', async () => {
+    it('reward tokens for staking', async () => {
+      let result = await tether.balanceOf(customer)
+      assert.equal(result, tokens('100'), 'customer mock wallet balance before staking')
     })
   })
 })
