@@ -18,6 +18,7 @@ contract DecentralBank {
   constructor(RWD _rwd, Tether _tether) {
     rwd = _rwd;
     tether = _tether;
+    owner = msg.sender;
   }
 
   function depositTokens(uint _amount) public {
@@ -38,7 +39,7 @@ contract DecentralBank {
   function issueTokens() public {
     // require the owner to issue tokens only
     require(msg.sender == owner, 'caller must be the owner');
-    for(let i = 0; i < stakers.length; i++) {
+    for(uint i = 0; i < stakers.length; i++) {
       address recipient = stakers[i];
       uint balance = stakingBalance[recipient]; // / 9 to create incentive for stakers 
       if(balance > 0) {

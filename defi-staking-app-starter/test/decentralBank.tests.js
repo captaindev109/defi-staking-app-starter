@@ -75,9 +75,10 @@ contract('DecentralBank', ([owner, customer]) => {
       assert.equal(result, true, 'customer is staking status after staking')
 
       // Issue tokens
-      await decentralBank.issueTokens({from: owner})
+      await decentralBank.issueTokens()
 
       await decentralBank.issueTokens({from: customer}).should.be.rejected
+    
     })
   })
 })
