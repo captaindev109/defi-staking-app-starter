@@ -11,15 +11,15 @@ class App extends Component {
     }
   }
 
-  async componentWillUnmount() {
+  async componentWillMount() {
     await this.loadWeb3()
     await this.loadBlockchainData()
   }
 
   async loadBlockchainData() {
     const web3 = window.web3
-    const account = web3.eth.getAccounts()
-    console.log(account)
+    const account = await web3.eth.getAccounts()
+    console.log('account: ', account)
   }
 
   async loadWeb3() {
