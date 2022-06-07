@@ -18,7 +18,7 @@ class App extends Component {
     }
   }
 
-  async componentWillUnmount() {
+  async componentWillMount() {
     await this.loadWeb3()
     await this.loadBlockchainData()
   }
