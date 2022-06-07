@@ -7,7 +7,14 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      account: '0x00'
+      account: '0x00',
+      tether: {},
+      rwd: {},
+      decentralBank: {},
+      tetherBalance: '0',
+      rwdBalance: '0',
+      stakingBalance: '0',
+      loading: true
     }
   }
 
@@ -19,7 +26,7 @@ class App extends Component {
   async loadBlockchainData() {
     const web3 = window.web3
     const account = web3.eth.getAccounts()
-    console.log(account)
+    this.setState({account: account[0]})
   }
 
   async loadWeb3() {
