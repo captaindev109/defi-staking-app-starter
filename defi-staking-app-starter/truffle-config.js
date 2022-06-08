@@ -76,7 +76,7 @@ module.exports = {
     // }
   },
   contracts_directory: './src/contracts/',
-  contracts_build_directory: './src/truffle_abis'
+  contracts_build_directory: './src/truffle_abis',
   // Set default mocha options here, use special reporters, etc.
   mocha: {
     // timeout: 100000
