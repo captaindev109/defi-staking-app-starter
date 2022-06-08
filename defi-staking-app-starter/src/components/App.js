@@ -27,7 +27,15 @@ class App extends Component {
     const web3 = window.web3
     const account = await web3.eth.getAccounts()
     this.setState({account: account[0]})
-    console.log(account)
+    const networkId = await web3.eth.net.getId()
+
+    // Load Tether Contract
+    const tetherData = Tether.networks[networkId]
+    if(tetherData) {
+      const tether = web3.eth.Contract(Tether.abi, tetherData.address)
+      this.setState({tether})
+    }
+    console.log(networkId)
   }
 
   async loadWeb3() {
