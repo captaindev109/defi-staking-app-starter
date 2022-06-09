@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Navbar from './Navbar';
 import Web3 from 'web3';
+import Tether from '../truffle_abis/Tether.json'
 
 class App extends Component {
 
@@ -34,6 +35,10 @@ class App extends Component {
     if(tetherData) {
       const tether = web3.eth.Contract(Tether.abi, tetherData.address)
       this.setState({tether})
+      let tetherBalance = tether.methods.balanceOf(this.state.account).call()
+      this.setState({tetherBalance: tetherBalance.toString()})
+    } else {
+      window.alert('Error! Tether contract not deployed - no detected network!')
     }
     console.log(networkId)
   }
