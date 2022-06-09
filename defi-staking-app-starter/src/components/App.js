@@ -33,9 +33,9 @@ class App extends Component {
     // Load Tether Contract
     const tetherData = Tether.networks[networkId]
     if(tetherData) {
-      const tether = web3.eth.Contract(Tether.abi, tetherData.address)
+      const tether = new web3.eth.Contract(Tether.abi, tetherData.address)
       this.setState({tether})
-      let tetherBalance = tether.methods.balanceOf(this.state.account).call()
+      let tetherBalance = await tether.methods.balanceOf(this.state.account).call()
       this.setState({tetherBalance: tetherBalance.toString()})
     } else {
       window.alert('Error! Tether contract not deployed - no detected network!')
