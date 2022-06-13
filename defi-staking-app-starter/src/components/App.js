@@ -4,6 +4,8 @@ import Web3 from 'web3';
 import Tether from '../truffle_abis/Tether.json'
 import RWD from '../truffle_abis/RWD.json'
 import DecentralBank from '../truffle_abis/DecentralBank.json'
+import Main from './Main'
+
 
 class App extends Component {
 
@@ -68,8 +70,7 @@ class App extends Component {
       window.alert('Error! DecentralBank contract not deployed - no detected network!')
     }
 
-
-    console.log(networkId)
+    this.setState({loading: false})
   }
 
   async loadWeb3() {
@@ -88,7 +89,13 @@ class App extends Component {
       <div>
         <Navbar account={this.state.account} />
         <div className='text-center'>
-          <h1>Hello, world!</h1>
+          <div className='container-fluid mt-5'>
+            <div className='row'>
+              <main role='main' className='col-lg-12 ml-auto mr-auto' style={{maxWidth: '600px', minHeight: '100vm'}}>
+                <Main />
+              </main>
+            </div>
+          </div>
         </div>
       </div>
     )
