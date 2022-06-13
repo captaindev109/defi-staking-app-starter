@@ -85,14 +85,26 @@ class App extends Component {
   }
 
   render() {
+    let content
+    {
+      this.state.loading ? content = 
+        <p id='loader' className='text-center' style={{margin:'30px'}}>
+          LOADING PLEASE...
+        </p> : content = 
+        <Main 
+          tetherBalance={this.state.tetherBalance}
+          rwdBalance={this.state.rwdBalance}
+          stakingBalance={this.state.stakingBalance}
+        />
+    }
     return (
       <div>
         <Navbar account={this.state.account} />
-        <div className='text-center'>
+        <div className='text-cen  ter'>
           <div className='container-fluid mt-5'>
-            <div className='row'>
+            <div className='row content'>
               <main role='main' className='col-lg-12 ml-auto mr-auto' style={{maxWidth: '600px', minHeight: '100vm'}}>
-                <Main />
+                {content}
               </main>
             </div>
           </div>
