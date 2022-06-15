@@ -25,7 +25,7 @@ class Main extends Component {
               event.preventDefault()
               let amount
               amount = this.input.value.toString()
-              amount = window.web3.utils.fromWei(amount, 'Ether')
+              amount = window.web3.utils.toWei(amount, 'Ether')
               this.props.stakeTokens(amount)
             }}
             className='mb-3'>
