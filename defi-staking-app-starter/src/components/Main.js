@@ -2,18 +2,19 @@ import React, { Component } from 'react'
 import tether from '../tether.png'
 
 class Main extends Component {
+
   render() {
     return (
       <div id='content' className='mt-3'>
         <table className='table text-muted text-center'>
           <thead>
-            <tr style={{color: 'black'}}>
+            <tr style={{color: 'white'}}>
               <th scope='col'>Staking Balance</th>
               <th scope='col'>Reward Balance</th>
             </tr>
           </thead>
           <tbody>
-            <tr style={{color:'black'}}>
+            <tr style={{color:'white'}}>
               <td>{window.web3.utils.fromWei(this.props.stakingBalance, 'Ether')} USDT</td>
               <td>{window.web3.utils.fromWei(this.props.rwdBalance, 'Ether')} RWD</td>
             </tr>
@@ -53,7 +54,13 @@ class Main extends Component {
               <button type='submit' className='btn btn-primary btn-lg btn-block'>DEPOSIT</button>
             </div>
           </form>
-          <button className='btn btn-primary btn-lg btn-block'>WITHDRAW</button>
+          <button 
+          type='submit'
+          onClick={(event) => {
+            event.preventDefault()
+            this.props.unstakeTokens()
+          }}
+          className='btn btn-primary btn-lg btn-block'>WITHDRAW</button>
           <div className='card-body text-center' style={{color: 'blue'}}>
             AIRDROP
           </div>
