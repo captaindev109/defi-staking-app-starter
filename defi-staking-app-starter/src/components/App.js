@@ -105,7 +105,7 @@ class App extends Component {
     let content
     {
       this.state.loading ? content = 
-        <p id='loader' className='text-center' style={{margin:'30px'}}>
+        <p id='loader' className='text-center' style={{margin:'30px', color: 'white'}}>
           LOADING PLEASE...
         </p> : content = 
         <Main 
